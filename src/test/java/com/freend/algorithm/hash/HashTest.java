@@ -6,8 +6,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -52,18 +55,14 @@ public class HashTest {
     }
 
     private String completionSolution(String[] participant, String[] completion) {
-        List<String> partList = Arrays.asList(participant);
-        List<String> completionList = Arrays.asList(completion);
-
-        partList.sort(Comparator.naturalOrder());
-        completionList.sort(Comparator.naturalOrder());
-
-        for (int i = 0; i < partList.size() - 1; i++) {
-            if (!partList.get(i).equals(completionList.get(i))) {
-                return partList.get(i);
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        for (int i = 0; i < participant.length - 1; i++) {
+            if (!participant[i].equals(completion[i])) {
+                return participant[i];
             }
         }
-        return  partList.get(partList.size() - 1);
+        return participant[participant.length - 1];
     }
 
     /**
