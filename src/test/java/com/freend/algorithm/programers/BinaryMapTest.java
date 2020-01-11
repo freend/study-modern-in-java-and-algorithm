@@ -20,10 +20,10 @@ public class BinaryMapTest {
         assertThat(this.binaryMap.binaryMap(n, arr1, arr2), equalTo(new String[]{"#####", "# # #", "### #", "#  ##", "#####"}));
     }
     @Test
-    public void sample() {
+    public void beforeBinaryMap() {
         int n = 6;
         int[] arr1 = new int[] {46, 33, 33 ,22, 31, 50};
         int[] arr2 = new int[] {27 ,56, 19, 14, 14, 10};
-        assertThat(this.binaryMap.binaryMap(n, arr1, arr2), equalTo(new String[]{"######", "###  #", "##  ##", " #### ", " #####", "### # "}));
+        assertThat(this.binaryMap.beforeBinaryMap(n, arr1, arr2), equalTo(new String[]{"######", "###  #", "##  ##", " #### ", " #####", "### # "}));
     }
 }
