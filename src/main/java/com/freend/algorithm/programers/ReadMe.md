@@ -5,3 +5,6 @@
 - [콜라츠 추측](CollatzGuess.md)
 - [단어압축](CompressWord.md)
 - [가운데 단어](MiddleString.md)
+- [나누어 떨어지는 숫자 배열](DivideNumberArray.md)
+- [최소공배수, 최대공약수](GcdLcm.md)
+- [이진법 지도](BinaryMap.md)
