@@ -3,7 +3,7 @@ package com.freend.algorithm.programers;
 public class BinaryMap {
     private int arrLength;
     public String[] binaryMap(int n, int[] firstArr, int[] secondArr) {
-        this.arrLength = firstArr.length;
+        this.arrLength = n;
         String[] answer = new String[this.arrLength];
         for (int i = 0; i < firstArr.length; i++) {
             String mergeBinary = this.changeBinary(firstArr[i], secondArr[i]);
@@ -25,7 +25,7 @@ public class BinaryMap {
      */
 
     public String[] beforeBinaryMap(int n, int[] firstArr, int[] secondArr) {
-        this.arrLength = firstArr.length;
+        this.arrLength = n;
         String[] answer = new String[this.arrLength];
         for (int i = 0; i < firstArr.length; i++) {
             String firstBinary = this.changeBinary(firstArr[i]);
@@ -37,24 +37,24 @@ public class BinaryMap {
     }
     private String mergeLine(String firstLine, String secondLine) {
         int length = firstLine.length();
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < length; i++) {
             if (String.valueOf(firstLine.charAt(i)).equals("0") && String.valueOf(secondLine.charAt(i)).equals("0")) {
-                result += " ";
+                result.append(" ");
             } else {
-                result += "#";
+                result.append("#");
             }
         }
-        return result;
+        return result.toString();
     }
     private String changeBinary(int num) {
-        String resultStr = "";
+        StringBuilder resultStr = new StringBuilder();
         String binaryStr = Integer.toBinaryString(num);
         int gapLen = arrLength - binaryStr.length();
         for (int i = 0; i < gapLen; i++) {
-            resultStr += "0";
+            resultStr.append("0");
         }
-        resultStr += binaryStr;
-        return resultStr;
+        resultStr.append(binaryStr);
+        return resultStr.toString();
     }
 }
