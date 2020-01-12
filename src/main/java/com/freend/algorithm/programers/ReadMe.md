@@ -8,3 +8,4 @@
 - [나누어 떨어지는 숫자 배열](DivideNumberArray.md)
 - [최소공배수, 최대공약수](GcdLcm.md)
 - [이진법 지도](BinaryMap.md)
+- [실패율](FailRate.md)
