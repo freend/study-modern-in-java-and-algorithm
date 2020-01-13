@@ -9,3 +9,4 @@
 - [최소공배수, 최대공약수](GcdLcm.md)
 - [이진법 지도](BinaryMap.md)
 - [실패율](FailRate.md)
+- [제일 작은 수 제거하기](ArrayRemove.md)
