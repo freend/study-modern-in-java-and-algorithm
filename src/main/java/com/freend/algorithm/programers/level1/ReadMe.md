@@ -12,3 +12,4 @@
 - [제일 작은 수 제거하기](ArrayRemove.md)
 - [이상한 문자열 만들기](StrangeLetters.md)
 - [문자열 내 맘대로 정렬하기](SelfSort.md)
+- [체육복을 찾아라](Greedy.md)
