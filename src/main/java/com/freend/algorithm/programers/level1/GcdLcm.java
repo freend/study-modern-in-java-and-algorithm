@@ -1,4 +1,4 @@
-package com.freend.algorithm.programers;
+package com.freend.algorithm.programers.level1;
 
 public class GcdLcm {
     // 작은수까지 나오므로 작은수까지 for 문을 돌리면서 둘다 나머지가 0인 것을 구한다.

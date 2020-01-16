@@ -1,4 +1,4 @@
-package com.freend.algorithm.programers;
+package com.freend.algorithm.programers.level1;
 
 public class Day2016 {
     String[] days = {"THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"};

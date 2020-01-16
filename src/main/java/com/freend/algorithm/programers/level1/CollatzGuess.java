@@ -1,4 +1,4 @@
-package com.freend.algorithm.programers;
+package com.freend.algorithm.programers.level1;
 
 public class CollatzGuess {
     public int collatzGuess(int num) {
