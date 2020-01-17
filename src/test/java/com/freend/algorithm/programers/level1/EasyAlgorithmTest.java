@@ -1,4 +1,4 @@
-package com.freend.algorithm.programers;
+package com.freend.algorithm.programers.level1;
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
