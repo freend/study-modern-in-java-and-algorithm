@@ -7,14 +7,12 @@ public class CompleteStack {
         if (String.valueOf(s.charAt(0)).equals(")")) {
             return false;
         }
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.push("(");
+        Stack<Character> stack = new Stack<>();
+        for (Character item : s.toCharArray()) {
+            if (item == '(') {
+                stack.push(item);
             } else {
-                if (stack.isEmpty()) {
-                    return false;
-                } else {
+                if(!stack.isEmpty()) {
                     stack.pop();
                 }
             }
