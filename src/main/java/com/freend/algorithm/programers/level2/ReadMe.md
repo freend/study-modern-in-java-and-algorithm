@@ -4,4 +4,4 @@
 - [짝지어 지우기](MatchRemove.md)
 - [영어 끝말잇기](WordGame.md)
 - [다음 큰 숫자](BinaryNumber.md)
-
+- [최댓값과 최솟값](MinMax.md)
