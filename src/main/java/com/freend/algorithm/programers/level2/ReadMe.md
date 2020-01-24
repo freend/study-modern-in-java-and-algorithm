@@ -6,3 +6,4 @@
 - [다음 큰 숫자](BinaryNumber.md)
 - [최댓값과 최솟값](MinMax.md)
 - [예상 대진표](FixtureList.md)
+- [다리를 지나는 트럭](BridgeTruck.md)
