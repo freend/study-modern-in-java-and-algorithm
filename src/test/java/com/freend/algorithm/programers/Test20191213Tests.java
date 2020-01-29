@@ -2,6 +2,9 @@ package com.freend.algorithm.programers;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 public class Test20191213Tests {
     /**
      * 문제 설명
@@ -22,17 +25,16 @@ public class Test20191213Tests {
      * 9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
      */
     @Test
-    public void test1() {
-        System.out.println(this.test1Impl(987));
+    public void 자릿수_더하기() {
+        assertThat(placeValue(987), equalTo(24));
     }
-    private int test1Impl(int n) {
+    private int placeValue(int n) {
         int answer = 0;
         String numToString = String.valueOf(n);
         String[] stringToArray = numToString.split("");
         for (int i = 0; i < stringToArray.length; i++) {
             answer += Integer.parseInt(stringToArray[i]);
         }
-
         return answer;
     }
 
@@ -54,10 +56,10 @@ public class Test20191213Tests {
      * 5의 약수는 1, 5입니다. 이를 모두 더하면 6입니다.
      */
     @Test
-    public void test2() {
-        System.out.println(this.test2Impl(12));
+    public void 약수의_합() {
+        assertThat(sumFactor(12), equalTo(28));
     }
-    private int test2Impl(int n) {
+    private int sumFactor(int n) {
         int answer = 0;
         for (int i = 1; i <= n; i++) {
             answer += (n % i == 0) ? i : 0;
