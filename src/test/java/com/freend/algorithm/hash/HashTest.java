@@ -1,70 +1,19 @@
 package com.freend.algorithm.hash;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class HashTest {
-    /**
-     * Programmers 사용한 이유.
-     * 제출시 호율성 체크가 있어서 단순히 수식을 해결하는 수준에서 멈추면 안된다.
-     */
-    /**
-     * 문제 설명
-     * 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
-     *
-     * 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을
-     * return 하도록 solution
-     * 함수를 작성해주세요.
-     *
-     * 제한사항
-     * 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
-     * completion의 길이는 participant의 길이보다 1 작습니다.
-     * 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-     * 참가자 중에는 동명이인이 있을 수 있습니다.
-     */
-    @Test
-    public void 완주하지_못한_선수() {
-        String [] participant = {"leo", "kiki", "eden"};
-        String [] completion = {"eden", "kiki"};
-        assertThat("정답은 leo", this.completionSolution(participant, completion), equalTo("leo"));
-
-        participant = new String[]{"marina", "josipa", "nikola", "vinko", "filipa"};
-        completion = new String[]{"josipa", "filipa", "marina", "nikola"};
-        assertThat("정답은 vinko", this.completionSolution(participant, completion), equalTo("vinko"));
-
-        participant = new String[]{"mislav", "stanko", "mislav", "ana"};
-        completion = new String[]{"stanko", "ana", "mislav"};
-        assertThat("정답은 mislav", this.completionSolution(participant, completion), equalTo("mislav"));
-    }
-
-    private String completionSolution(String[] participant, String[] completion) {
-        Arrays.sort(participant);
-        Arrays.sort(completion);
-        for (int i = 0; i < participant.length - 1; i++) {
-            if (!participant[i].equals(completion[i])) {
-                return participant[i];
-            }
-        }
-        return participant[participant.length - 1];
-    }
-
     /**
      * 전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
      * 전화번호가 다음과 같을 경우, 구조대 전화번호는 영석이의 전화번호의 접두사입니다.
@@ -165,5 +114,102 @@ public class HashTest {
         }
         // 아무것도 없는 경우 -1 후 반환.
         return answer - 1;
+    }
+
+    /**
+     * 문제 설명
+     * 스트리밍 사이트에서 [장르 별]로 [가장 많이 재생된 노래]를 [두 개씩 모아 베스트 앨범을 출시]하려 합니다. 노래는 고유 번호로 구분하며,
+     * 노래를 수록하는 기준은 다음과 같습니다.
+     *
+     * 속한 노래가 많이 재생된 장르를 먼저 수록합니다.
+     * 장르 내에서 많이 재생된 노래를 먼저 수록합니다.
+     * 장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
+     * 노래의 장르를 나타내는 문자열 배열 genres와 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때, 베스트 앨범에 들어갈 노래의
+     * 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.
+     *
+     * 제한사항
+     * genres[i]는 고유번호가 i인 노래의 장르입니다.
+     * plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.
+     * genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
+     * 장르 종류는 100개 미만입니다.
+     * 장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
+     * [모든 장르는 재생된 횟수가 다릅니다].
+     * 입출력 예
+     * genres	plays	return
+     * [classic, pop, classic, classic, pop]	[500, 600, 150, 800, 2500]	[4, 1, 3, 0]
+     * 입출력 예 설명
+     * classic 장르는 1,450회 재생되었으며, classic 노래는 다음과 같습니다.
+     *
+     * 고유 번호 3: 800회 재생
+     * 고유 번호 0: 500회 재생
+     * 고유 번호 2: 150회 재생
+     * pop 장르는 3,100회 재생되었으며, pop 노래는 다음과 같습니다.
+     *
+     * 고유 번호 4: 2,500회 재생
+     * 고유 번호 1: 600회 재생
+     * 따라서 pop 장르의 [4, 1]번 노래를 먼저, classic 장르의 [3, 0]번 노래를 그다음에 수록합니다.
+     */
+
+    @Test
+    public void bestAlbum() {
+        String[] genres = {"a", "a", "d", "d", "c", "b"};
+        int[] plays = {5, 5, 3, 3, 5, 6};
+        System.out.println(albumSolution(genres, plays));
+
+    }
+
+    public int[] albumSolution(String[] genres, int[] plays) {
+        Map<String, Map<Integer, Integer>> musicMap = new HashMap<>();
+        Map<Integer, Integer> partMap;
+        Map<String, Integer> totalMap = new HashMap<>();
+        // music map 에 장르별로 분리된 내용을 넣어준다. total map 에 총 수량을 넣어준다.
+        for (int i = 0; i < genres.length; i++) {
+            // 있다면
+            if (musicMap.containsKey(genres[i])) {
+                partMap = musicMap.get(genres[i]);
+                partMap.put(plays[i], i);
+
+                totalMap.put(genres[i], totalMap.get(genres[i]) + plays[i]);
+            } else {
+                musicMap.put(genres[i], new TreeMap<>(Comparator.reverseOrder()));
+                partMap = musicMap.get(genres[i]);
+                partMap.put(plays[i], i);
+
+                totalMap.put(genres[i], plays[i]);
+            }
+        }
+
+        // 여기서 나갈 순서를 정합니다.
+        Map<Integer, String> outCateMap = new TreeMap<>(Comparator.reverseOrder());
+        totalMap.forEach((key, value) -> outCateMap.put(value, key));
+        List<String> outCateList = new ArrayList<>(outCateMap.values());
+
+        int[] answer = new int[musicMap.size() * 2];
+
+        for (int i = 0; i < outCateList.size(); i++) {
+            List<Integer> playsIndex = new ArrayList<>(musicMap.get(outCateList.get(i)).values());
+            for (int j = 0; j < playsIndex.size(); j++) {
+                answer[i * 2 + j] = playsIndex.get(j);
+                if (j == 1) {
+                    break;
+                }
+            }
+        }
+
+        return answer;
+    }
+
+    @Test
+    public void guavaMultiMap() {
+        Multimap<String, String> family = ArrayListMultimap.create();
+
+        family.put("Father Kimchy", "1st Son-Kimchy");
+        family.put("Father Kimchy", "1st Daughter-kimchy");
+        family.put("Father Jason", "1st Son-Jason");
+
+        Collection<String> child = family.get("Father Kimchy");
+        System.out.println(child);
+        child = family.get("Father Jason");
+        System.out.println(child);
     }
 }
