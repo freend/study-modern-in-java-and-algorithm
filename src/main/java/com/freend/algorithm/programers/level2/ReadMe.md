@@ -8,5 +8,5 @@
 - [예상 대진표](FixtureList.md)
 - [다리를 지나는 트럭](BridgeTruck.md)
 - [타워](Tower.md)
-
 - [Jaden Case](JadenCase.md)
+- [땅따먹기](OtherColNumber.md)
