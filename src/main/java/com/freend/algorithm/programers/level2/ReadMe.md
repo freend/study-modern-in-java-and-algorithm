@@ -10,3 +10,4 @@
 - [타워](Tower.md)
 - [Jaden Case](JadenCase.md)
 - [땅따먹기](OtherColNumber.md)
+- [점프와 순간이동](JumpAndPortal.md)
